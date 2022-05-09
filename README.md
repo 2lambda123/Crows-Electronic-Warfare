@@ -101,3 +101,4 @@ Woof Woof by Alexander: https://orangefreesounds.com/woof-woof/
 Telephone Ring Sound Effect BY SPANAC: https://www.freesoundslibrary.com/telephone-ring-sound-effect/ 
 Old Fashioned Telephone Ringing Sound BY SPANAC: https://www.freesoundslibrary.com/old-fashioned-telephone-ringing-sound/ 
 Cutting Tree BY SPANAC: https://www.freesoundslibrary.com/cutting-tree/ 
+Cinematic Chanting / Throat Singing Percussion Trailer.wav by GregorQuendel: https://freesound.org/people/GregorQuendel/sounds/514509/ 
