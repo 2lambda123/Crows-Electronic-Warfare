@@ -7,6 +7,17 @@ if (!_hasTFAR) exitWith {diag_log "crowsEW-jamming: TFAR not loaded, so TFAR Jam
 //Don't do anything in Singleplayer, as TFAR isn't enabled in SP
 if (!isMultiplayer && !is3DENMultiplayer) exitWith {};
 
+// satcom boost loop
+if (isServer) then {
+	GVAR(PFH_satcomHandler) = [FUNC(satcomServerLoop) , 0.5] call CBA_fnc_addPerFrameHandler; 
+	private _addSatcomId = [QGVAR(addSatcom), FUNC(addSatcom)] call CBA_fnc_addEventHandler;
+	private _removeSatcomId = [QGVAR(removeSatcom), FUNC(removeSatcom)] call CBA_fnc_addEventHandler;
+};
+// DEBUG
+// GVAR(debugbla) = [{
+// 	systemChat format ["Send: %1, Recv: %2", player getVariable ["tf_sendingDistanceMultiplicator", -1],player getVariable ["tf_receivingDistanceMultiplicator", -1]];
+// 	} , 0.5] call CBA_fnc_addPerFrameHandler; 
+
 // if not a player we don't do anything
 if (!hasInterface) exitWith {}; 
 
@@ -19,18 +30,6 @@ private _toggleJamid = [QGVAR(actionToggleJam), FUNC(actionJamToggleListener)] c
 
 // due to best practices we are gonna put the jam loop in unscheduled space, so we use a PFH to run every 0.5s 
 GVAR(PFH_jamPlayer) = [FUNC(jammerPlayerLocal) , 0.5] call CBA_fnc_addPerFrameHandler; 
-
-// satcom boost loop
-if (isServer) then {
-	GVAR(PFH_satcomHandler) = [FUNC(satcomServerLoop) , 0.5] call CBA_fnc_addPerFrameHandler; 
-	private _addSatcomId = [QGVAR(addSatcom), FUNC(addSatcom)] call CBA_fnc_addEventHandler;
-	private _removeSatcomId = [QGVAR(removeSatcom), FUNC(removeSatcom)] call CBA_fnc_addEventHandler;
-};
-
-// DEBUG
-// GVAR(debugbla) = [{
-// 	systemChat format ["Send: %1, Recv: %2", player getVariable ["tf_sendingDistanceMultiplicator", -1],player getVariable ["tf_receivingDistanceMultiplicator", -1]];
-// 	} , 0.5] call CBA_fnc_addPerFrameHandler; 
 
 // zeus only 
 // spawn function as we need to check if zeus, and we cannot do that at mission time 0 due to race-condition

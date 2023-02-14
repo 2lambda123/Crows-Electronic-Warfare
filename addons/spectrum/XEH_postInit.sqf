@@ -40,3 +40,5 @@ player addEventHandler ["Respawn", {
 private _zeusRcEventStartId = ["zen_remoteControlStarted", FUNC(eventZeusStartRC)] call CBA_fnc_addEventHandler;
 private _zeusRcEventStopId = ["zen_remoteControlStopped", FUNC(eventZeusStopRC)] call CBA_fnc_addEventHandler;
 
+
+
